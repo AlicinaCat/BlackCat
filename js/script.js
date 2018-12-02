@@ -54,18 +54,22 @@ class Player {
         secondCard = this.checkCardValue(secondCard);
         let total = firstCard + secondCard;
 
-        this.checkAceValue(total, firstCard, secondCard);
+        if (secondCard == 11) {
+            secondCard = this.checkAceValue(total, secondCard);
+            console.log("Ace has value " + secondCard);
+        }
+
         console.log(this.name + "'s total is " + total);
         return total;
     }
 
-    checkAceValue(total, firstCard, secondCard) {
+    checkAceValue(total, card) {
         if (total > 21) {
-            if (firstCard == 11)
-                firstCard = 1;
-            else if (secondCard == 11)
-                secondCard = 1;
+            if (card == 11)
+                card = 1;
         }
+
+        return card;
     }
 
     draw() {
@@ -83,6 +87,15 @@ class Player {
         console.log(this.name + " has drawn the extra card " + extraCard);
         extraCard = this.checkCardValue(extraCard);
         total += extraCard;
+        if (extraCard == 11) {
+            extraCard = this.checkAceValue(total, extraCard);
+            if (extraCard == 1) {
+                total -= 11;
+                total += extraCard;
+            }
+            console.log("Ace has value " + extraCard);
+
+        }
         console.log("The new total is " + total);
         playerTotal = total;
     }
