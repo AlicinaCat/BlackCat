@@ -13,17 +13,18 @@ class Player {
 
     turn(choice, total) {
         gameOver = this.blackJack(total);
-        
+
         if (!gameOver) {
             switch (choice) {
                 case 1:
-                    this.hit(total);
+                    total = this.hit(total);
                     break;
                 case 2:
                     this.stay();
                     break;
             }
         }
+        return total;
     }
 
     blackJack(total) {
@@ -32,12 +33,9 @@ class Player {
             case (total == 21):
                 console.log(this.name + ' won!');
                 return gameOver = true;
-            case (total > 21):
-                console.log('You lost!');
-                return gameOver = true;
-            case (total < 21):
+            default:
                 console.log('Wanna hit or stay?');
-                return gameOver;
+                return gameOver = false;
         }
     }
 
@@ -97,7 +95,7 @@ class Player {
 
         }
         console.log("The new total is " + total);
-        playerTotal = total;
+        return total;
     }
 
     stay() {
@@ -113,13 +111,20 @@ class Computer extends Player {
 }
 
 function end() {
-    if (playerTotal > computerTotal) {
-        console.log(player.name + " won!");
-        gameOver = true;
-    } else if (computerTotal > playerTotal) {
+    if (playerTotal > 21) {
         console.log(computer.name + " won!");
-        gameOver = true;
+    } else if (computerTotal > 21) {
+        console.log(player.name + " won!");
+    } else if (playerTotal > computerTotal) {
+        console.log(player.name + " won!");
+    } else {
+        console.log(computer.name + " won!");
     }
+
+    gameOver = true;
+
+    console.log("final player total : " + playerTotal);
+    console.log("final computer total : " + computerTotal);
 }
 
 var gameOver = false;
@@ -135,7 +140,7 @@ console.log("Player 2 name is " + computer.name + ", credit $" + player.credit);
 
 var playerTotal = player.start();
 var computerTotal = computer.start();
-player.turn(1, playerTotal);
-computer.turn(2, computerTotal);
+playerTotal = player.turn(1, playerTotal);
+computerTotal = computer.turn(1, computerTotal);
 
 end();
