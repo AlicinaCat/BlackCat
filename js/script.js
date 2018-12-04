@@ -1,15 +1,17 @@
 class Player {
     constructor(name) {
         this.name = name;
-        this.credit = 0;
+        this.credit = 50;
+        this.drawnCards = [];
     }
 
     start() {
+        this.credit -= 10;
         let firstCard = this.draw();
         let secondCard = this.draw();
         let total = this.calculateSum(firstCard, secondCard);
         gameOver = this.blackJack(total);
-        
+
         return total;
     }
 
@@ -37,6 +39,8 @@ class Player {
         switch (true) {
             case (total == 21):
                 console.log(this.name + ' won!');
+                this.credit += 20;
+                console.log("credit: " + this.credit)
                 return gameOver = true;
             default:
                 console.log('Wanna hit or stay?');
@@ -82,6 +86,10 @@ class Player {
         let card = cards[cardIndex];
         console.log("the card " + card + " of " + type + " was drawn by " +
             this.name);
+        
+        let drawnCard = card + type;
+        this.drawnCards.push(drawnCard);
+
         return card;
     }
 
@@ -118,12 +126,16 @@ class Computer extends Player {
 function end() {
     if (playerTotal > 21) {
         console.log(computer.name + " won!");
+        computer.credit += 20;
     } else if (computerTotal > 21) {
         console.log(player.name + " won!");
+        player.credit += 20;
     } else if (playerTotal > computerTotal) {
         console.log(player.name + " won!");
+        player.credit += 20;
     } else {
         console.log(computer.name + " won!");
+        computer.credit += 20;
     }
 
     gameOver = true;
