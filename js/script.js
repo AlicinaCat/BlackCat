@@ -8,22 +8,27 @@ class Player {
         let firstCard = this.draw();
         let secondCard = this.draw();
         let total = this.calculateSum(firstCard, secondCard);
+        gameOver = this.blackJack(total);
+        
         return total;
     }
 
     turn(choice, total) {
         gameOver = this.blackJack(total);
 
-        if (!gameOver) {
-            switch (choice) {
-                case 1:
-                    total = this.hit(total);
-                    break;
-                case 2:
-                    this.stay();
-                    break;
+        if (playerTotal < 22) {
+            if (!gameOver) {
+                switch (choice) {
+                    case 1:
+                        total = this.hit(total);
+                        break;
+                    case 2:
+                        this.stay();
+                        break;
+                }
             }
-        }
+        } else 
+            console.log('You lost!');
         return total;
     }
 
@@ -140,7 +145,7 @@ console.log("Player 2 name is " + computer.name + ", credit $" + player.credit);
 
 var playerTotal = player.start();
 var computerTotal = computer.start();
-playerTotal = player.turn(1, playerTotal);
-computerTotal = computer.turn(1, computerTotal);
+//playerTotal = player.turn(1, playerTotal);
+//computerTotal = computer.turn(1, computerTotal);
 
-end();
+//end();
