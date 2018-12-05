@@ -1,10 +1,11 @@
 $('#hit').click(function () {
-    player.hit();
-    showExtraCard();
+    player.turn(1);
+    showPlayerExtraCard();
 });
 
 $('#stay').click(function () {
-    player.stay();
+    player.turn(2);
+    computer.turn();
     // $('#credit').empty();
     // $('#credit').append("Credit: " + player.credit);
     // end();
@@ -18,9 +19,16 @@ function showCards() {
         cardImage.src = "pictures/classic-cards/" + card + ".png";
         $('#playerCards').append('<li></li> ').append(cardImage);
     }
+
+    for (var card of computer.drawnCards) {
+        console.log(card);
+        let cardImage = document.createElement("img");
+        cardImage.src = "pictures/classic-cards/" + card + ".png";
+        $('#computerCards').append('<li></li> ').append(cardImage);
+    }
 }
 
-function showExtraCard() {
+function showPlayerExtraCard() {
     let imgTitle = player.drawnCards[player.drawnCards.length - 1];
     let cardImage = document.createElement('img');
     cardImage.src = "pictures/classic-cards/" + imgTitle + ".png";
@@ -29,15 +37,31 @@ function showExtraCard() {
     $('#playerCards').append('<li></li> ').append(cardImage);
 }
 
-var player = new Player('Alicina');
-player.start();
+function showComputerExtraCard() {
+    let imgTitle = computer.drawnCards[computer.drawnCards.length - 1];
+    let cardImage = document.createElement('img');
+    cardImage.src = "pictures/classic-cards/" + imgTitle + ".png";
+    console.log(imgTitle);
 
-$('#credit').append("Credit: " + player.credit);
+    $('#computerCards').append('<li></li> ').append(cardImage);
+}
 
-$('#playerScore').append(player.total);
-//$('#computerScore').append(computerTotal);
-
-
-
-showCards();
+function end() {
+    if (gameOver) {
+        console.log('Game over!')
+    } else {
+        if (player.total > 21) {
+            console.log(computer.name + " won!");
+        } else if (computer.total > 21) {
+            console.log(player.name + " won!");
+            player.credit += 20;
+        } else if (player.total > computer.total) {
+            console.log(player.name + " won!");
+            player.credit += 20;
+        } else {
+            console.log(computer.name + " won!");
+            computer.credit += 20;
+        }
+    }
+}
 
