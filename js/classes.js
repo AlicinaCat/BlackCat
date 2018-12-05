@@ -75,6 +75,7 @@ class Player {
         this.total += extraCard;
 
         console.log(this.name + "'s new total is " + this.total);
+        gameOver = checkGameOver();
     }
 
     stay() {
@@ -131,6 +132,7 @@ class Computer extends Player {
 
         console.log(this.name + "'s new total is " + this.total);
         showComputerExtraCard();
+        gameOver = checkGameOver();
     }
 }
 

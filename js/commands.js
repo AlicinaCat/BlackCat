@@ -1,3 +1,4 @@
+
 $('#hit').click(function () {
     player.turn(1);
     showPlayerExtraCard();
@@ -6,6 +7,7 @@ $('#hit').click(function () {
 $('#stay').click(function () {
     player.turn(2);
     computer.turn();
+    end();
     // $('#credit').empty();
     // $('#credit').append("Credit: " + player.credit);
     // end();
@@ -46,22 +48,33 @@ function showComputerExtraCard() {
     $('#computerCards').append('<li></li> ').append(cardImage);
 }
 
-function end() {
+function checkGameOver() {
     if (gameOver) {
         console.log('Game over!')
     } else {
         if (player.total > 21) {
             console.log(computer.name + " won!");
+            gameOver = true;
         } else if (computer.total > 21) {
             console.log(player.name + " won!");
             player.credit += 20;
-        } else if (player.total > computer.total) {
-            console.log(player.name + " won!");
-            player.credit += 20;
-        } else {
-            console.log(computer.name + " won!");
-            computer.credit += 20;
+            gameOver = true;
         }
+    }
+
+    console.log("Game over: " + gameOver);
+    return gameOver;
+}
+
+function end() {
+    if (player.total > computer.total) {
+        console.log(player.name + " won!");
+        player.credit += 20;
+        gameOver = true;
+    } else if (player.total < computer.total) {
+        console.log(computer.name + " won!");
+        computer.credit += 20;
+        gameOver = true;
     }
 }
 
