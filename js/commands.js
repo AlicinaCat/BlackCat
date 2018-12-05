@@ -1,17 +1,15 @@
 $('#hit').click(function () {
-    playerTotal = player.turn(1, playerTotal);
-    computerTotal = computer.turn(1, computerTotal);
+    player.hit();
+    showExtraCard();
 });
 
 $('#stay').click(function () {
-    playerTotal = player.turn(2, playerTotal);
-    $('#credit').empty();
-    $('#credit').append("Credit: " + player.credit);
-    end();
+    player.stay();
+    // $('#credit').empty();
+    // $('#credit').append("Credit: " + player.credit);
+    // end();
 
 });
-
-$('#credit').append("Credit: " + player.credit);
 
 function showCards() {
     for (var card of player.drawnCards) {
@@ -20,13 +18,26 @@ function showCards() {
         cardImage.src = "pictures/classic-cards/" + card + ".png";
         $('#playerCards').append('<li></li> ').append(cardImage);
     }
-    for (var card of computer.drawnCards) {
-        console.log(card);
-        let cardImage = document.createElement("img");
-        cardImage.src = "pictures/classic-cards/" + card + ".png";
-        $('#computerCards').append('<li></li> ').append(cardImage);
-    }
 }
+
+function showExtraCard() {
+    let imgTitle = player.drawnCards[player.drawnCards.length - 1];
+    let cardImage = document.createElement('img');
+    cardImage.src = "pictures/classic-cards/" + imgTitle + ".png";
+    console.log(imgTitle);
+
+    $('#playerCards').append('<li></li> ').append(cardImage);
+}
+
+var player = new Player('Alicina');
+player.start();
+
+$('#credit').append("Credit: " + player.credit);
+
+$('#playerScore').append(player.total);
+//$('#computerScore').append(computerTotal);
+
+
 
 showCards();
 
