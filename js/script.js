@@ -24,6 +24,16 @@ function updateComputerScore() {
     $('#computerScore').append('Computer score: ' + computer.total);
 }
 
+function playAgain() {
+    $('#buttons').append('<h2 id="playAgain">Wanna play again? </h2>');
+    $('#playAgain').append('<a id ="yes" href="">Yes</a> ');
+    $('#playAgain').append('<a id="no" href="../credits.html">No</a>');
+
+    $('#yes').click(function() {
+        location.reload();
+    });
+}
+
  // TODO: 
  // - fix gameover bool
  // - fix credit

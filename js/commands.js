@@ -66,6 +66,7 @@ function checkGameOver() {
     }
 
     console.log("Game over: " + gameOver);
+
     return gameOver;
 }
 
@@ -87,6 +88,8 @@ function end() {
         player.credit += 20;
         gameOver = true;
     }
+
+    playAgain();
 }
 
 function removeButtons() {
