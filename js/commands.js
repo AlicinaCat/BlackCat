@@ -19,13 +19,19 @@ function showCards() {
         cardImage.src = "pictures/classic-cards/" + card + ".png";
         $('#playerCards').append('<li></li> ').append(cardImage);
     }
+}
 
-    for (var card of computer.drawnCards) {
-        console.log(card);
-        let cardImage = document.createElement("img");
-        cardImage.src = "pictures/classic-cards/" + card + ".png";
-        $('#computerCards').append('<li></li> ').append(cardImage);
-    }
+function showComputerCards() {
+    var firstCard = computer.drawnCards[0];
+    console.log(firstCard);
+    let cardImage = document.createElement("img");
+    cardImage.src = "pictures/classic-cards/" + firstCard + ".png";
+    $('#computerCards').append('<li></li> ').append(cardImage);
+
+    let secondCardImage = document.createElement("img");
+    secondCardImage.src = "pictures/classic-cards/flipped.png";
+    secondCardImage.id = "hiddenCard";
+    $('#computerCards').append('<li></li> ').append(secondCardImage);
 }
 
 function showPlayerExtraCard() {
@@ -35,6 +41,17 @@ function showPlayerExtraCard() {
     console.log(imgTitle);
 
     $('#playerCards').append('<li></li> ').append(cardImage);
+}
+
+function showHiddenCard() {
+    $('#hiddenCard').remove();
+
+    let imgTitle = computer.drawnCards[1];
+    let cardImage = document.createElement('img');
+    cardImage.src = "pictures/classic-cards/" + imgTitle + ".png";
+    console.log(imgTitle);
+
+    $('#computerCards').append('<li></li> ').append(cardImage);
 }
 
 function showComputerExtraCard() {
@@ -72,29 +89,33 @@ function checkGameOver() {
 }
 
 function end() {
+
+    showHiddenCard();
+    $('#computerScore').show();
+
     while (computer.total < 17) {
         computer.turn();
     }
 
     if (!gameOver) {
-    
-    if (player.total > computer.total) {
-        console.log(player.name + " won!");
-        player.credit += (bet * 2);
-        console.log("Credit: " + player.credit);
-        updatePlayerCredit();
-        gameOver = true;
-    } else if (player.total < computer.total) {
-        console.log(computer.name + " won!");
-        gameOver = true;
-    } else {
-        console.log(player.name + " won!");
-        player.credit += (bet * 2);
-        console.log("Credit: " + player.credit);
-        updatePlayerCredit();
-        gameOver = true;
+
+        if (player.total > computer.total) {
+            console.log(player.name + " won!");
+            player.credit += (bet * 2);
+            console.log("Credit: " + player.credit);
+            updatePlayerCredit();
+            gameOver = true;
+        } else if (player.total < computer.total) {
+            console.log(computer.name + " won!");
+            gameOver = true;
+        } else {
+            console.log(player.name + " won!");
+            player.credit += (bet * 2);
+            console.log("Credit: " + player.credit);
+            updatePlayerCredit();
+            gameOver = true;
+        }
     }
-}
 
     playAgain();
 }

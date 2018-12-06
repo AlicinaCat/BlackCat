@@ -16,9 +16,10 @@ console.log(gameOver);
 $('#credit').append("Credit: " + player.credit);
 
 $('#playerScore').append(player.total);
-$('#computerScore').append(computer.total);
+$('#computerScore').append(computer.total).hide();;
 
 showCards();
+showComputerCards();
 }
 
 function updatePlayerScore() {

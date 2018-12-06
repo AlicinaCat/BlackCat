@@ -124,6 +124,7 @@ class Computer extends Player {
     }
 
     turn() {
+
         if (this.total < 17) {
             this.hit();
         } else {
