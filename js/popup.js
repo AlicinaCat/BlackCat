@@ -11,7 +11,7 @@ $(document).ready(function () {
         popup.style.display = "none";
         text += $('#textbox').val();
         alert("You chose to bet: " + text);
-        bet = text;
+        bet = parseInt(text);
         startGame();
     }
 });

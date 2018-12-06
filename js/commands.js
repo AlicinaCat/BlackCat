@@ -59,7 +59,9 @@ function checkGameOver() {
             gameOver = true;
         } else if (computer.total > 21) {
             console.log(player.name + " won!");
-            player.credit += 20;
+            player.credit += bet;
+            updatePlayerCredit();
+            console.log("Credit: " + player.credit);
             gameOver = true;
         }
     }
@@ -73,20 +75,26 @@ function end() {
     while (computer.total < 17) {
         computer.turn();
     }
+
+    if (!gameOver) {
     
     if (player.total > computer.total) {
         console.log(player.name + " won!");
-        player.credit += 20;
+        player.credit += bet;
+        console.log("Credit: " + player.credit);
+        updatePlayerCredit();
         gameOver = true;
     } else if (player.total < computer.total) {
         console.log(computer.name + " won!");
-        computer.credit += 20;
         gameOver = true;
     } else {
         console.log(player.name + " won!");
-        player.credit += 20;
+        player.credit += bet;
+        console.log("Credit: " + player.credit);
+        updatePlayerCredit();
         gameOver = true;
     }
+}
 
     playAgain();
 }

@@ -31,6 +31,12 @@ function updateComputerScore() {
     $('#computerScore').append('Computer score: ' + computer.total);
 }
 
+
+function updatePlayerCredit() {
+    $('#credit').empty();
+    $('#credit').append('Credit: ' + player.credit);
+}
+
 function playAgain() {
     $('#buttons').append('<h2 id="playAgain">Wanna play again? </h2>');
     $('#playAgain').append('<a id ="yes" href="">Yes</a> ');
