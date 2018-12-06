@@ -8,10 +8,21 @@ $(document).ready(function () {
     $('#creditTitle').append("(current credit: " + player.credit + ")");
 
     confirm.onclick = function () {
-        popup.style.display = "none";
+        
         text += $('#textbox').val();
-        alert("You chose to bet: " + text);
         bet = parseInt(text);
-        startGame();
+
+        if (isNaN(bet)) {
+            alert("Wrong input!");
+            location.reload();
+            
+        } else if (bet > player.credit) {
+            alert("The bet amount is bigger than the credit!");
+            location.reload();
+        } else {
+            alert("You chose to bet: " + text);
+            popup.style.display = "none";
+            startGame();
+        }
     }
 });
