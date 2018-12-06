@@ -10,11 +10,19 @@ console.log(gameOver);
 $('#credit').append("Credit: " + player.credit);
 
 $('#playerScore').append(player.total);
-//$('#computerScore').append(computerTotal);
+$('#computerScore').append(computer.total);
 
 showCards();
 
+function updatePlayerScore() {
+    $('#playerScore').empty();
+    $('#playerScore').append('Player score: ' + player.total);
+}
 
+function updateComputerScore() {
+    $('#computerScore').empty();
+    $('#computerScore').append('Computer score: ' + computer.total);
+}
 
  // TODO: 
  // - fix gameover bool

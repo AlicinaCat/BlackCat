@@ -8,6 +8,7 @@ $('#stay').click(function () {
     player.turn(2);
     computer.turn();
     end();
+    removeButtons();
     // $('#credit').empty();
     // $('#credit').append("Credit: " + player.credit);
     // end();
@@ -52,7 +53,9 @@ function checkGameOver() {
     if (gameOver) {
         console.log('Game over!')
     } else {
-        if (player.total > 21) {
+        if (computer.total < 17) {
+            gameOver = false;
+        } else if (player.total > 21) {
             console.log(computer.name + " won!");
             gameOver = true;
         } else if (computer.total > 21) {
@@ -67,6 +70,10 @@ function checkGameOver() {
 }
 
 function end() {
+    while (computer.total < 17) {
+        computer.turn();
+    }
+    
     if (player.total > computer.total) {
         console.log(player.name + " won!");
         player.credit += 20;
@@ -75,6 +82,14 @@ function end() {
         console.log(computer.name + " won!");
         computer.credit += 20;
         gameOver = true;
+    } else {
+        console.log(player.name + " won!");
+        player.credit += 20;
+        gameOver = true;
     }
 }
 
+function removeButtons() {
+    $('#hit').remove();
+    $('#stay').remove();
+}

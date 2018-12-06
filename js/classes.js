@@ -88,6 +88,12 @@ class Player {
         } else if (choice == 2) {
             this.stay();
         }
+
+        if (gameOver) {
+            removeButtons();
+        }
+
+        updatePlayerScore();
     }
 }
 
@@ -119,6 +125,12 @@ class Computer extends Player {
         } else {
             this.stay();
         }
+
+        if (gameOver) {
+            removeButtons();
+        }
+
+        updateComputerScore();
     }
 
     hit() {
