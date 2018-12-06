@@ -1,8 +1,14 @@
+// Basic methods that act as main script 
+
+//$(document).ready(creditPopup);
 
 var player = new Player('Alicina');
+var computer = new Computer();
+
+function startGame() {
+
 gameOver = player.start();
 
-var computer = new Computer();
 gameOver = computer.start();
 
 console.log(gameOver);
@@ -13,6 +19,7 @@ $('#playerScore').append(player.total);
 $('#computerScore').append(computer.total);
 
 showCards();
+}
 
 function updatePlayerScore() {
     $('#playerScore').empty();
@@ -33,10 +40,8 @@ function playAgain() {
         location.reload();
     });
 }
-
  // TODO: 
  // - fix gameover bool
  // - fix credit
- // - fix play again
  // - connect to server & database
- // - check ace value on first card 
+ // - (check ace value on first card) 

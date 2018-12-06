@@ -1,3 +1,5 @@
+// Player class with game dynamic methods
+
 class Player {
     constructor(name) {
         this.name = name;
@@ -7,7 +9,7 @@ class Player {
     }
 
     start() {
-        this.credit -= 10;
+        this.credit -= bet;
         let firsCard = this.draw();
         let secondCard = this.draw();
 
@@ -97,6 +99,8 @@ class Player {
     }
 }
 
+// Computer class with game methods that behave differently
+
 class Computer extends Player {
     constructor() {
     super();
@@ -148,7 +152,7 @@ class Computer extends Player {
     }
 }
 
-
+// creation of fixed game variables 
 
 var cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 var types = ['Hearts', 'Spades', 'Diamonds', 'Clubs'];

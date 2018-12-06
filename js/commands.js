@@ -1,3 +1,4 @@
+// Graphics - buttons and card pictures methods
 
 $('#hit').click(function () {
     player.turn(1);
@@ -9,10 +10,6 @@ $('#stay').click(function () {
     computer.turn();
     end();
     removeButtons();
-    // $('#credit').empty();
-    // $('#credit').append("Credit: " + player.credit);
-    // end();
-
 });
 
 function showCards() {
@@ -48,6 +45,8 @@ function showComputerExtraCard() {
 
     $('#computerCards').append('<li></li> ').append(cardImage);
 }
+
+// Interface that handles the end of the game
 
 function checkGameOver() {
     if (gameOver) {
