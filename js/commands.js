@@ -59,7 +59,7 @@ function checkGameOver() {
             gameOver = true;
         } else if (computer.total > 21) {
             console.log(player.name + " won!");
-            player.credit += bet;
+            player.credit += (bet * 2);
             updatePlayerCredit();
             console.log("Credit: " + player.credit);
             gameOver = true;
@@ -80,7 +80,7 @@ function end() {
     
     if (player.total > computer.total) {
         console.log(player.name + " won!");
-        player.credit += bet;
+        player.credit += (bet * 2);
         console.log("Credit: " + player.credit);
         updatePlayerCredit();
         gameOver = true;
@@ -89,7 +89,7 @@ function end() {
         gameOver = true;
     } else {
         console.log(player.name + " won!");
-        player.credit += bet;
+        player.credit += (bet * 2);
         console.log("Credit: " + player.credit);
         updatePlayerCredit();
         gameOver = true;
