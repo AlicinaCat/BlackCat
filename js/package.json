@@ -1,0 +1,19 @@
+{
+  "name": "connection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "connection.js",
+  "scripts": {
+    "test": "testcat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlicinaCat/BlackCat.git"
+  },
+  "author": "AlicinaCat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlicinaCat/BlackCat/issues"
+  },
+  "homepage": "https://github.com/AlicinaCat/BlackCat#readme"
+}
