@@ -23,6 +23,13 @@ connection.query('SELECT * FROM Users', function (error, results, fields) {
     results.forEach(result => {
         console.log(result);
     });
+
+    for (let i = 0; i < results.length; i++) {
+        console.log(results[i].userID);
+        console.log(results[i].username);
+        console.log(results[i].password);
+        console.log(results[i].credit);
+     }
 });
 
 connection.end();
