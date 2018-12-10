@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="loginForm" method="post" name="myform">
+        <label>User Name :</label>
+        <input type="text" name="username" id="username" />
+        <label>Password :</label>
+        <input type="password" name="password" id="password" />
+        <input type="button" value="Login" id="submit" onclick="validate()" />
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    function validate() {
+        $('#loginForm').click(function() {
+            $.post('/api/login', {username: username.value, password: password.value}, function(data) {
+                console.log("data received: " + username.value + password.value + ", code " + JSON.stringify(data));
+            });
+        })
+    }
+    </script>
+</body>
+
+</html>
