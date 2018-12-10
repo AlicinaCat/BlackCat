@@ -42,6 +42,7 @@ exports.register = function(req,res){
     var username= req.body.username;
     console.log("username is : '" + username + "'");
     var password = req.body.password;
+
     connection.query('SELECT * FROM users WHERE username = ?',[username], function (error, results, fields) {
     if (error) {
       // console.log("error ocurred",error);
@@ -53,8 +54,11 @@ exports.register = function(req,res){
       // console.log('The solution is: ', results);
       if(results.length >0){
         if(results[0].password == password){
+          var credit = (results[0].credit);
+          console.log("credit is " + credit);
           res.send({
             "code":200,
+            "credit": credit,
             "success":"login sucessfull"
               });
         }
