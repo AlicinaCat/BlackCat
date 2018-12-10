@@ -1,25 +1,28 @@
 // Basic methods that act as main script 
 
-//$(document).ready(creditPopup);
+var player;
+var computer;
 
-var player = new Player('Alicina');
-var computer = new Computer();
+$(document).ready(function () {
+    player = new Player('Alicina');
+    computer = new Computer();
+});
 
 function startGame() {
 
-gameOver = player.start();
+    gameOver = player.start();
 
-gameOver = computer.start();
+    gameOver = computer.start();
 
-console.log(gameOver);
+    console.log(gameOver);
 
-$('#credit').append("Credit: " + player.credit);
+    $('#credit').append("Credit: " + player.credit);
 
-$('#playerScore').append(player.total);
-$('#computerScore').append(computer.total).hide();;
+    $('#playerScore').append(player.total);
+    $('#computerScore').append(computer.total).hide();;
 
-showCards();
-showComputerCards();
+    showCards();
+    showComputerCards();
 }
 
 function updatePlayerScore() {
@@ -43,7 +46,7 @@ function playAgain() {
     $('#playAgain').append('<a id ="yes" href="">Yes</a> ');
     $('#playAgain').append('<a id="no" href="../credits.html">No</a>');
 
-    $('#yes').click(function() {
+    $('#yes').click(function () {
         location.reload();
     });
 }

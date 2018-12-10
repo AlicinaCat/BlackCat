@@ -1,9 +1,10 @@
-// Player class with game dynamic methods
+
+;// Player class with game dynamic methods
 
 class Player {
-    constructor(name) {
-        this.name = name;
-        this.credit = 50;
+    constructor() {
+        this.name = localStorage.getItem("username");
+        this.credit = localStorage.getItem("credit");
         this.drawnCards = [];
         this.total = 0;
     }

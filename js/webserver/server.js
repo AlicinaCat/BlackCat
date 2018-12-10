@@ -24,6 +24,7 @@ game.get('/', function(req, res) {
 
 game.get('/blackjack', function(req, res) {
     res.sendFile('./game.html', {root: __dirname });
+    //res.render('./game.html', {root: __dirname }, {username:username, credit:credit});
     //res.append('./login.js', {root: __dirname });
 });
 

@@ -18,17 +18,21 @@
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    function validate() {
-        $('#loginForm').click(function() {
-            $.post('/api/login', {username: username.value, password: password.value}, function(data) {
-                console.log("data received: " + username.value + password.value + ", code " + JSON.stringify(data));
-                console.log(data.code + " credit: " + data.credit);
-                // if (data.code == 200) {
-                //     //$.post('/blackjack', {username: username.value, password: password.value, credit: data.credit});
-                // }
-            });
-        })
-    }
+        function validate() {
+            $('#loginForm').click(function () {
+                $.post('/api/login', { username: username.value, password: password.value }, function (data) {
+                    console.log("data received: " + username.value + password.value + ", code " + JSON.stringify(data));
+                    console.log(data.code + " credit: " + data.credit);
+                    if (data.code == 200) {
+                        localStorage.setItem("username", username.value);
+                        localStorage.setItem("credit", data.credit);
+                        window.location.href = '/blackjack';
+                        //$.post('/blackjack', { username: username.value, credit: credit});
+                    
+                    }
+                });
+            })
+        }
     </script>
 </body>
 
