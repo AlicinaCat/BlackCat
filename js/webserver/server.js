@@ -21,9 +21,19 @@ game.get('/', function(req, res) {
     //res.append('./login.js', {root: __dirname });
 });
 
+
+game.get('/blackjack', function(req, res) {
+    res.sendFile('./game.html', {root: __dirname });
+    //res.append('./login.js', {root: __dirname });
+});
+
+app.use('/js', express.static('js'));
+app.use('/css', express.static('css'));
+
 //route to handle user registration
 api.post('/register',login.register);
 api.post('/login',login.login)
 app.use('/api', api);
 app.use('/', game);
 app.listen(5000);
+

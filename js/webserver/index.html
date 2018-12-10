@@ -22,6 +22,10 @@
         $('#loginForm').click(function() {
             $.post('/api/login', {username: username.value, password: password.value}, function(data) {
                 console.log("data received: " + username.value + password.value + ", code " + JSON.stringify(data));
+                console.log(data.code);
+                if (data.code == 200) {
+                    window.location.href = '/blackjack';
+                }
             });
         })
     }
