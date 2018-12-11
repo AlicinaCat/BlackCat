@@ -1,4 +1,4 @@
-// Graphics - buttons and card pictures methods
+// Methods for the graphics - buttons and card pictures methods
 
 $('#hit').click(function () {
     player.turn(1);
@@ -147,11 +147,9 @@ function updateDatabase(credit) {
     console.log(credit);
         $.post('/api/updateCredit', { credit: credit, username: localStorage.getItem("username") }, function (data) {
             console.log("data received: code " + JSON.stringify(data));
-            //console.log(data.code + " credit: " + data.credit);
             if (data.code == 200) {
                 console.log('success!');
                 localStorage.setItem("credit", data.credit);
-                //$.post('/blackjack', { username: username.value, credit: credit});
             
             }
     })

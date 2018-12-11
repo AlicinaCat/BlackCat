@@ -1,5 +1,5 @@
 
-;// Player class with game dynamic methods
+// Player class with game dynamic methods
 
 class Player {
     constructor() {

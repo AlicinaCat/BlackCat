@@ -1,3 +1,5 @@
+// The server file with tha main routes
+
 var express    = require("express");
 var login = require('./routes/loginroutes');
 var bodyParser = require('body-parser');
@@ -11,7 +13,7 @@ app.use(function(req, res, next) {
 });
 var api = express.Router();
 var game = express.Router();
-// test route will trigger on /api
+
 api.get('/', function(req, res) {
     res.json({ message: 'welcome to our upload module apis' });
 });
@@ -26,21 +28,19 @@ api.get('/refill', function(req, res) {
 
 game.get('/', function(req, res) {
     res.sendFile('./index.html', {root: __dirname });
-    //res.append('./login.js', {root: __dirname });
 });
 
 
 game.get('/blackjack', function(req, res) {
     res.sendFile('./game.html', {root: __dirname });
-    //res.render('./game.html', {root: __dirname }, {username:username, credit:credit});
-    //res.append('./login.js', {root: __dirname });
 });
 
+// making the js, pictures, css folders static so that they can be accessed everywhere
 app.use('/js', express.static('js'));
 app.use('/css', express.static('css'));
 app.use('/pictures', express.static('pictures'));
 
-//route to handle user registration
+// main routes
 api.post('/register',login.register);
 api.post('/login',login.login);
 api.post('/refill', login.refill);

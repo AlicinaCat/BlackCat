@@ -1,4 +1,4 @@
-// Basic methods that act as main script 
+// Basic methods that act as main scripts for the application
 
 var player;
 var computer;
@@ -51,6 +51,4 @@ function playAgain(finaltext) {
 }
 
  // TODO: 
- // - fix style
- // - fix credits 
  // - (check ace value on first card) 

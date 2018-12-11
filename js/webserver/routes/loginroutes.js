@@ -1,3 +1,5 @@
+// file that handles the calls to the database and the answers to the website
+
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -7,16 +9,15 @@ var connection = mysql.createConnection({
 });
 connection.connect(function(err){
 if(!err) {
-    console.log("Database is connected ... nn");
+    console.log("Database is connected ... ");
 } else {
-    console.log("Error connecting database ... nn");
+    console.log("Error connecting database ... ");
 }
 });
 
+// creates new user 
 exports.register = function(req,res){
-    // console.log("req",req.body);
-    //var today = new Date();
-    var users={
+    var users = {
       "username":req.body.username,
       "password":req.body.password,
       "credit":50,
@@ -28,7 +29,7 @@ exports.register = function(req,res){
         "code":400,
         "failed":"error ocurred"
       })
-    }else{
+    } else {
       console.log('The solution is: ', results);
       res.send({
         "code":200,
@@ -38,9 +39,8 @@ exports.register = function(req,res){
     });
   }
 
+  // refills the user credit
   exports.refill = function(req,res){
-    // console.log("req",req.body);
-    //var today = new Date();
     var credit = req.body.credit;
     var username = req.body.username;
     console.log(credit);
@@ -52,20 +52,19 @@ exports.register = function(req,res){
         "code":400,
         "failed":"error ocurred",
       })
-    }else{
+    } else {
       console.log('The solution is: ', results);
       res.send({
         "code":200,
-        "success":"credit succesfully updated",
+        "success":"credit succesfully refilled",
         "credit": credit
           });
     }
     });
   }
 
+  // updates the user credit in the database
   exports.updateCredit = function(req,res){
-    // console.log("req",req.body);
-    //var today = new Date();
     var credit = req.body.credit;
     var username = req.body.username;
     console.log(credit);
@@ -77,7 +76,7 @@ exports.register = function(req,res){
         "code":400,
         "failed":"error ocurred",
       })
-    }else{
+    } else {
       console.log('The solution is: ', results);
       res.send({
         "code":200,
@@ -88,6 +87,7 @@ exports.register = function(req,res){
     });
   }
   
+  // check if the user input is correct and logs in
   exports.login = function(req,res){
     var username= req.body.username;
     console.log("username is : '" + username + "'");
@@ -95,13 +95,11 @@ exports.register = function(req,res){
 
     connection.query('SELECT * FROM users WHERE username = ?',[username], function (error, results, fields) {
     if (error) {
-      // console.log("error ocurred",error);
       res.send({
         "code":400,
         "failed":"error ocurred"
       })
-    } else{
-      // console.log('The solution is: ', results);
+    } else {
       if(results.length >0){
         if(results[0].password == password){
           var credit = (results[0].credit);
@@ -109,20 +107,20 @@ exports.register = function(req,res){
           res.send({
             "code":200,
             "credit": credit,
-            "success":"login sucessfull"
+            "success":"login sucessful"
               });
         }
-        else{
+        else {
           res.send({
             "code":204,
-            "success":"Username and password does not match"
+            "success":"Username and password do not match"
               });
         }
       }
-      else{
+      else {
         res.send({
           "code":204,
-          "success":"Username does not exits"
+          "success":"Username does not exist"
             });
       }
     }
