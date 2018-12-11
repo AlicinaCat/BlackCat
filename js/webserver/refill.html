@@ -5,15 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Refill</title>
+    <link href="http://localhost:5000/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Oswald" rel="stylesheet">
+    <title>Black Jack - Refill credit</title>
 </head>
 
 <body>
-    <form id="loginForm" method="post" name="myform">
-        <label>Credit :</label>
-        <input type="text" name="credit" id="credit" />
-        <input type="button" value="Refill" id="submit" onclick="refill(credit.value)" />
-    </form>
+    <div id="creditModal" class="popup" style="display: block;">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 id="refillcredit">Refill credit</h2>
+            </div>
+            <div class="popup-body">
+                <form id="loginForm" method="post" name="myform">
+                    <label><p>Credit to add :<p></label>
+                    <input type="text" name="credit" id="credit" />
+                    <input type="button" class="button" value="Refill" id="submit" onclick="refill(credit.value)" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://localhost:5000/js/login.js"></script>
 </body>

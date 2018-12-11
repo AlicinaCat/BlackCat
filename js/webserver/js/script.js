@@ -51,7 +51,7 @@ function playAgain() {
     });
 }
  // TODO: 
- // - fix gameover bool
- // - fix credit
- // - connect to server & database
+ // - fix style
+ // - fix credits 
+ // - fix popups
  // - (check ace value on first card) 

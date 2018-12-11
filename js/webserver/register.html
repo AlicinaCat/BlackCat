@@ -5,17 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <link href="http://localhost:5000/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Oswald" rel="stylesheet">
+    <title>Black Jack - Refill credit</title>
 </head>
 
 <body>
-    <form id="loginForm" method="post" name="myform">
-        <label>User Name :</label>
-        <input type="text" name="username" id="username" />
-        <label>Password :</label>
-        <input type="password" name="password" id="password" />
-        <input type="button" value="Login" id="submit" onclick="register()" />
-    </form>
+    <div id="creditModal" class="popup" style="display: block;">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 id="refillcredit">Register new user</h2>
+            </div>
+            <div class="popup-body">
+                <form id="loginForm" method="post" name="myform">
+                    <label>
+                        <p>User Name :</p>
+                    </label>
+                    <input type="text" name="username" id="username" />
+                    <label>
+                        <p>Password :</p>
+                    </label>
+                    <input type="password" name="password" id="password" />
+                    <input type="button" class="button" value="Login" id="submit" onclick="register()" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/login.js"></script>
 </body>

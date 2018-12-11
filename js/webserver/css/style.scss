@@ -18,6 +18,29 @@ body {
     }
 }
 
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #000000;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+a:hover {
+        
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #ffffff;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 header {
     background-color: #000000;
     top: 0;
@@ -116,7 +139,50 @@ footer {
     -webkit-animation-name: fadeIn;
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+
+    .button {
+        background-color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: right;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .button:hover, input[type=submit], input[type=submit]:hover {
+        color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: right;
+        background-color: #ffffff;
+        font-weight: bold;
+    }
+
+    h1 {
+        font-family: 'Abril Fatface', cursive;
+    }
+
+    a {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: right;
+        color: #ffffff;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #000000;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    a:hover {
+            
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: right;
+        color: #000000;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #ffffff;
+        padding-left: 5px;
+        padding-right: 5px;
+}
  }
  .popup-content {
     background-color: #ffffff;
@@ -141,8 +207,9 @@ footer {
  }
  .popup-header {
     padding: 1px 10px;
-    background-color: #8AC1E0;
+    background-color: #000000;
     color: white;
+    font-family: 'Abril Fatface', cursive;
  }
  .popup-body {padding: 1px 5px;}
  @-webkit-keyframes slideIn {

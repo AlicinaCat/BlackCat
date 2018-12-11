@@ -66,6 +66,8 @@ function showComputerExtraCard() {
 // Interface that handles the end of the game
 
 function checkGameOver() {
+    var finalText = "";
+
     if (gameOver) {
         console.log('Game over!')
     } else {
@@ -75,9 +77,11 @@ function checkGameOver() {
             console.log(computer.name + " won!");
             localStorage.setItem("credit", player.credit);
             updateDatabase(player.credit);
+            finalText += "You won!";
             gameOver = true;
         } else if (computer.total > 21) {
             console.log(player.name + " won!");
+            finalText += "You won!";
             player.credit += (bet * 2);
             localStorage.setItem("credit", player.credit);
             updatePlayerCredit();
