@@ -73,11 +73,15 @@ function checkGameOver() {
             gameOver = false;
         } else if (player.total > 21) {
             console.log(computer.name + " won!");
+            localStorage.setItem("credit", player.credit);
+            updateDatabase(player.credit);
             gameOver = true;
         } else if (computer.total > 21) {
             console.log(player.name + " won!");
             player.credit += (bet * 2);
+            localStorage.setItem("credit", player.credit);
             updatePlayerCredit();
+            updateDatabase(player.credit);
             console.log("Credit: " + player.credit);
             gameOver = true;
         }
@@ -104,15 +108,21 @@ function end() {
             player.credit += (bet * 2);
             console.log("Credit: " + player.credit);
             updatePlayerCredit();
+            updateDatabase(player.credit);
+            localStorage.setItem("credit", player.credit);
             gameOver = true;
         } else if (player.total < computer.total) {
             console.log(computer.name + " won!");
             gameOver = true;
+            updateDatabase(player.credit);
+            localStorage.setItem("credit", player.credit);
         } else {
             console.log(player.name + " won!");
             player.credit += (bet * 2);
             console.log("Credit: " + player.credit);
             updatePlayerCredit();
+            updateDatabase(player.credit);
+            localStorage.setItem("credit", player.credit);
             gameOver = true;
         }
     }
@@ -123,4 +133,18 @@ function end() {
 function removeButtons() {
     $('#hit').remove();
     $('#stay').remove();
+}
+
+function updateDatabase(credit) {
+    console.log(credit);
+        $.post('/api/updateCredit', { credit: credit, username: localStorage.getItem("username") }, function (data) {
+            console.log("data received: code " + JSON.stringify(data));
+            //console.log(data.code + " credit: " + data.credit);
+            if (data.code == 200) {
+                console.log('success!');
+                localStorage.setItem("credit", data.credit);
+                //$.post('/blackjack', { username: username.value, credit: credit});
+            
+            }
+    })
 }

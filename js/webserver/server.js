@@ -38,11 +38,13 @@ game.get('/blackjack', function(req, res) {
 
 app.use('/js', express.static('js'));
 app.use('/css', express.static('css'));
+app.use('/pictures', express.static('pictures'));
 
 //route to handle user registration
 api.post('/register',login.register);
 api.post('/login',login.login);
 api.post('/refill', login.refill);
+api.post('/updateCredit', login.updateCredit);
 app.use('/api', api);
 app.use('/', game);
 app.listen(5000);

@@ -56,7 +56,32 @@ exports.register = function(req,res){
       console.log('The solution is: ', results);
       res.send({
         "code":200,
-        "success":"user registered sucessfully",
+        "success":"credit succesfully updated",
+        "credit": credit
+          });
+    }
+    });
+  }
+
+  exports.updateCredit = function(req,res){
+    // console.log("req",req.body);
+    //var today = new Date();
+    var credit = req.body.credit;
+    var username = req.body.username;
+    console.log(credit);
+
+    connection.query("UPDATE users SET credit = ? WHERE username = '" + username + "'",[credit], function (error, results, fields) {
+    if (error) {
+      console.log("error ocurred",error);
+      res.send({
+        "code":400,
+        "failed":"error ocurred",
+      })
+    }else{
+      console.log('The solution is: ', results);
+      res.send({
+        "code":200,
+        "success":"credit succesfully updated",
         "credit": credit
           });
     }
