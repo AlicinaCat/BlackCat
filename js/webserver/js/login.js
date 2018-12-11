@@ -39,7 +39,8 @@ function refill(extracredit) {
             //console.log(data.code + " credit: " + data.credit);
             if (data.code == 200) {
                 console.log('success!');
-                //window.location.href = '/';
+                localStorage.setItem("credit", data.credit);
+                window.location.href = '/blackjack';
                 //$.post('/blackjack', { username: username.value, credit: credit});
             
             }

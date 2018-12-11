@@ -44,23 +44,20 @@ exports.register = function(req,res){
     var credit = req.body.credit;
     var username = req.body.username;
     console.log(credit);
-    var users={
-      "username":req.body.username,
-      "password":req.body.password,
-      "credit":50,
-    }
+
     connection.query("UPDATE users SET credit = ? WHERE username = '" + username + "'",[credit], function (error, results, fields) {
     if (error) {
       console.log("error ocurred",error);
       res.send({
         "code":400,
-        "failed":"error ocurred"
+        "failed":"error ocurred",
       })
     }else{
       console.log('The solution is: ', results);
       res.send({
         "code":200,
-        "success":"user registered sucessfully"
+        "success":"user registered sucessfully",
+        "credit": credit
           });
     }
     });
