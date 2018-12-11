@@ -16,6 +16,10 @@ api.get('/', function(req, res) {
     res.json({ message: 'welcome to our upload module apis' });
 });
 
+api.get('/register', function(req, res) {
+    res.sendFile('./register.html', {root: __dirname });
+});
+
 game.get('/', function(req, res) {
     res.sendFile('./index.html', {root: __dirname });
     //res.append('./login.js', {root: __dirname });

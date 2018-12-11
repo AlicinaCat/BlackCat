@@ -15,11 +15,11 @@ if(!err) {
 
 exports.register = function(req,res){
     // console.log("req",req.body);
-    var today = new Date();
+    //var today = new Date();
     var users={
       "username":req.body.username,
       "password":req.body.password,
-      "credit":req.body.credit,
+      "credit":50,
     }
     connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
     if (error) {
@@ -38,6 +38,7 @@ exports.register = function(req,res){
     });
   }
 
+  
   exports.login = function(req,res){
     var username= req.body.username;
     console.log("username is : '" + username + "'");
