@@ -12,6 +12,9 @@ $(document).ready(function () {
         text += $('#textbox').val();
         bet = parseInt(text);
 
+        if (player.credit  < 1) {
+            alert("You are ouf of credit, please refill")
+        }
         if (isNaN(bet)) {
             alert("Wrong input!");
             location.reload();
