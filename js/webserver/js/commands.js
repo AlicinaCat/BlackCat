@@ -12,6 +12,8 @@ $('#stay').click(function () {
     removeButtons();
 });
 
+var finalText = "";
+
 function showCards() {
     for (var card of player.drawnCards) {
         console.log(card);
@@ -66,7 +68,6 @@ function showComputerExtraCard() {
 // Interface that handles the end of the game
 
 function checkGameOver() {
-    var finalText = "";
 
     if (gameOver) {
         console.log('Game over!')
@@ -77,11 +78,11 @@ function checkGameOver() {
             console.log(computer.name + " won!");
             localStorage.setItem("credit", player.credit);
             updateDatabase(player.credit);
-            finalText += "You won!";
+            finalText += computer.name + " won!";
             gameOver = true;
         } else if (computer.total > 21) {
             console.log(player.name + " won!");
-            finalText += "You won!";
+            finalText += player.name + " won!";
             player.credit += (bet * 2);
             localStorage.setItem("credit", player.credit);
             updatePlayerCredit();
@@ -109,6 +110,7 @@ function end() {
 
         if (player.total > computer.total) {
             console.log(player.name + " won!");
+            finalText += player.name + " won!";
             player.credit += (bet * 2);
             console.log("Credit: " + player.credit);
             updatePlayerCredit();
@@ -117,11 +119,13 @@ function end() {
             gameOver = true;
         } else if (player.total < computer.total) {
             console.log(computer.name + " won!");
+            finalText += computer.name + " won!";
             gameOver = true;
             updateDatabase(player.credit);
             localStorage.setItem("credit", player.credit);
         } else {
             console.log(player.name + " won!");
+            finalText += player.name + " won!";
             player.credit += (bet * 2);
             console.log("Credit: " + player.credit);
             updatePlayerCredit();
@@ -131,7 +135,7 @@ function end() {
         }
     }
 
-    playAgain();
+    playAgain(finalText);
 }
 
 function removeButtons() {

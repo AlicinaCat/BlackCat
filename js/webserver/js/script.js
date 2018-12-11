@@ -41,17 +41,16 @@ function updatePlayerCredit() {
     $('#credit').append('Credit: ' + player.credit);
 }
 
-function playAgain() {
-    $('#buttons').append('<h2 id="playAgain">Wanna play again? </h2>');
-    $('#playAgain').append('<a id ="yes" href="">Yes</a> ');
-    $('#playAgain').append('<a id="no" href="../credits.html">No</a>');
+function playAgain(finaltext) {
+    $('#buttons').append('<p id="finaltext">' + finaltext + ' </p>');
+    $('#finaltext').append('<p><a id ="yes" href="">Play Again</a></p>');
 
     $('#yes').click(function () {
         location.reload();
     });
 }
+
  // TODO: 
  // - fix style
  // - fix credits 
- // - fix popups
  // - (check ace value on first card) 

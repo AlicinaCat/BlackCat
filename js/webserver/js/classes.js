@@ -19,6 +19,7 @@ class Player {
         if (this.total == 21) {
             console.log(this.name + ' has black jack!')
             gameOver = true;
+            playAgain(this.name + " won!");
         }
 
         return gameOver;
@@ -94,6 +95,7 @@ class Player {
 
         if (gameOver) {
             removeButtons();
+            playAgain("");
         }
 
         updatePlayerScore();
