@@ -27,3 +27,22 @@ function register() {
         });
     })
 }
+
+
+function refill(extracredit) {
+    console.log(extracredit);
+    var newcredit = parseInt(extracredit) + parseInt(localStorage.getItem("credit"));
+    console.log(newcredit);
+    $('#loginForm').click(function () {
+        $.post('/api/refill', { credit: newcredit, username: localStorage.getItem("username") }, function (data) {
+            console.log("data received: code " + JSON.stringify(data));
+            //console.log(data.code + " credit: " + data.credit);
+            if (data.code == 200) {
+                console.log('success!');
+                //window.location.href = '/';
+                //$.post('/blackjack', { username: username.value, credit: credit});
+            
+            }
+        });
+    })
+}

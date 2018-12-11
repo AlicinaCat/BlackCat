@@ -20,6 +20,10 @@ api.get('/register', function(req, res) {
     res.sendFile('./register.html', {root: __dirname });
 });
 
+api.get('/refill', function(req, res) {
+    res.sendFile('./refill.html', {root: __dirname });
+});
+
 game.get('/', function(req, res) {
     res.sendFile('./index.html', {root: __dirname });
     //res.append('./login.js', {root: __dirname });
@@ -37,8 +41,8 @@ app.use('/css', express.static('css'));
 
 //route to handle user registration
 api.post('/register',login.register);
-api.post('/login',login.login)
+api.post('/login',login.login);
+api.post('/refill', login.refill);
 app.use('/api', api);
 app.use('/', game);
 app.listen(5000);
-

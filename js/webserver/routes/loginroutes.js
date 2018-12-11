@@ -38,6 +38,33 @@ exports.register = function(req,res){
     });
   }
 
+  exports.refill = function(req,res){
+    // console.log("req",req.body);
+    //var today = new Date();
+    var credit = req.body.credit;
+    var username = req.body.username;
+    console.log(credit);
+    var users={
+      "username":req.body.username,
+      "password":req.body.password,
+      "credit":50,
+    }
+    connection.query("UPDATE users SET credit = ? WHERE username = '" + username + "'",[credit], function (error, results, fields) {
+    if (error) {
+      console.log("error ocurred",error);
+      res.send({
+        "code":400,
+        "failed":"error ocurred"
+      })
+    }else{
+      console.log('The solution is: ', results);
+      res.send({
+        "code":200,
+        "success":"user registered sucessfully"
+          });
+    }
+    });
+  }
   
   exports.login = function(req,res){
     var username= req.body.username;
